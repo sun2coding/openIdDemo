@@ -1,0 +1,22 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          azure:
+            client-id: ${AZURE_CLIENT_ID:ababvd}
+            client-secret: ${AZURE_CLIENT_SECRET:gabsng}
+            client-name: Azure AD
+            scope: openid,email,profile
+            redirect-uri: "localhost:8080/login/oauth2/code/abcd"
+            authorization-grant-type: authorization_code
+            provider: azure
+        provider:
+          azure:
+            issuer-uri: https://login.partner.microsoftonline.com/organizations/oauth2/v2.0/authorize
+            user-name-attribute: email
+
+app:
+  internal-service:
+    base-url: https://my-internal-service.com/api
+    token-endpoint: /auth/token
